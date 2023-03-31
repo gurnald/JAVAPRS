@@ -15,15 +15,15 @@ public class RequestLine {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int quantity;
+	private int quantity = 1;
 	
 	@JsonBackReference
 	@ManyToOne(optional=false)
-	@JoinColumn(name="requestId")
+	@JoinColumn(name="requestId", columnDefinition="int")
 	private Request request;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="productId")
+	@JoinColumn(name="productId", columnDefinition="int")
 	private Product product;
 	
 	public RequestLine() {}

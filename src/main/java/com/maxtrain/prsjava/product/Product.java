@@ -20,11 +20,11 @@ public class Product {
 	private double price;
 	@Column(length=30, nullable=false)
 	private String unit;
-	@Column(length=255)
+	@Column(length=255, nullable = true)
 	private String photoPath;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="vendorId")
+	@JoinColumn(name="vendorId", columnDefinition="int")
 	private Vendor vendor;
 	
 	public Product() {}

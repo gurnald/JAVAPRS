@@ -67,8 +67,7 @@ public class RequestLineController {
 	
 	@PostMapping
 	public ResponseEntity<RequestLine> postRequestline (@RequestBody RequestLine requestline) {
-		RequestLine newRequestLine = reqlRepo.save(requestline);
-		reqlRepo.findById(newRequestLine.getId());
+		RequestLine newRequestline = reqlRepo.save(requestline);
 		Optional<Request> request = reqRepo.findById(requestline.getRequest().getId());
 		if(!request.isEmpty() ) {
 			boolean success = recalculateOrderTotal(request.get().getId());
@@ -76,7 +75,7 @@ public class RequestLineController {
 				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		}
-		return new ResponseEntity<RequestLine>(newRequestLine, HttpStatus.CREATED);
+		return new ResponseEntity<RequestLine>(newRequestline, HttpStatus.CREATED);
 		
 	}
 

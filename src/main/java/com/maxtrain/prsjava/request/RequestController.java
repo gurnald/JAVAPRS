@@ -54,8 +54,8 @@ public class RequestController {
 			// PostMethod
 			@PostMapping
 			public ResponseEntity<Request> postRequest(@RequestBody Request request) {
-					Request newRequest = reqRepo.save(request);
-							return new ResponseEntity<Request>(newRequest, HttpStatus.CREATED);
+				Request newRequest = reqRepo.save(request);
+				return new ResponseEntity<Request>(newRequest, HttpStatus.CREATED);
 			}
 			// PutMethod
 			@SuppressWarnings("rawtypes")

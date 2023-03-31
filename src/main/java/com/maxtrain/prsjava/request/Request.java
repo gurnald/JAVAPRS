@@ -21,17 +21,17 @@ public class Request {
 	private String description;
 	@Column(length=80, nullable=false)
 	private String justification;
-	@Column(length=80, nullable=false)
-	private String deliveryMethod;
 	@Column(length=20, nullable=false)
-	private String status;
-	@Column(length=10, nullable=true)
+	private String deliveryMode = "Pickup";
+	@Column(length=10, nullable=false)
+	private String status = "NEW";
+	@Column(length=80, nullable=true)
 	private String rejectionReason;
 	@Column(columnDefinition="decimal(11,2) NOT NULL DEFAULT 0.0")
 	private double total;
 	
 	@ManyToOne(optional=false)
-	@JoinColumn(name="userId")
+	@JoinColumn(name="userId", columnDefinition="int")
 	private User user;
 	
 	@JsonManagedReference
@@ -64,12 +64,12 @@ public class Request {
 		this.justification = justification;
 	}
 
-	public String getDeliveryMethod() {
-		return deliveryMethod;
+	public String getDeliveryMode() {
+		return deliveryMode;
 	}
 
-	public void setDeliveryMethod(String deliveryMethod) {
-		this.deliveryMethod = deliveryMethod;
+	public void setDeliveryMode(String deliveryMode) {
+		this.deliveryMode = deliveryMode;
 	}
 
 	public String getStatus() {
